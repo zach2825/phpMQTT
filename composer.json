@@ -1,5 +1,5 @@
 {
-    "name": "bluerhinos/phpmqtt",
+    "name": "practo/phpmqtt",
     "description": "Simple MQTT Class",
     "license": "BSD",
     "authors": [
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Buzz": "lib/"
+            "PhpMQTT": "lib/"
         }
     }
 }
