@@ -1,7 +1,9 @@
 <?php
 
+namespace PhpMQTT;
+
 /*
- 	phpMQTT
+ 	PhpMQTT
 	A simple php class to connect/publish/subscribe to an MQTT broker
  
 */
@@ -32,8 +34,8 @@
 	
 */
 
-/* phpMQTT */
-class phpMQTT {
+/* PhpMQTT */
+class PhpMQTT {
 
 	private $socket; 			/* holds the socket	*/
 	private $msgid = 1;			/* counter for message id */
@@ -137,12 +139,9 @@ class phpMQTT {
 		fwrite($this->socket,  $buffer);
 
 	 	$string = $this->read(4);
-
-		if(ord($string{0})>>4 == 2 && $string{3} == chr(0)){
+		if( !empty($string) && strlen($string) > 3 && ord($string{0})>>4 == 2 && $string{3} == chr(0)){
 			if($this->debug) echo "Connected to Broker\n"; 
 		}else{	
-			error_log(sprintf("Connection failed! (Error: 0x%02x 0x%02x)\n", 
-			                        ord($string{0}),ord($string{3})));
 			return false;
 		}
 
